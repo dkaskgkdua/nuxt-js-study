@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h1>메인 페이지</h1>
-    <p>메인 페이지 입니다</p>
+    <h1>404 에러 페이지</h1>
+    <p>페이지를 찾을 수 없습니다.</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Main"
+  name: "error"
 }
 </script>
 
