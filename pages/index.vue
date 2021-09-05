@@ -6,9 +6,10 @@
       </div>
       <ul>
         <li
-          class= "item flex"
           v-for="product in products"
           :key="product.id"
+          class= "item flex"
+          @click="moveToDetailPage(product.id)"
         >
           <img
             class="product-image"
@@ -39,6 +40,11 @@ export default {
     return {
     }
   },
+  methods: {
+    moveToDetailPage(id) {
+      this.$router.push(`detail/${id}`);
+    }
+  }
 }
 </script>
 
