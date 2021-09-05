@@ -1,29 +1,3 @@
-<template>
-  <div class="app">
-    <main>
-      <div>
-        <input type="text">
-      </div>
-      <ul>
-        <li
-          v-for="product in products"
-          :key="product.id"
-          class= "item flex"
-          @click="moveToDetailPage(product.id)"
-        >
-          <img
-            class="product-image"
-            :src="product.imageUrl"
-            :alt="product.name"/>
-          <p>{{ product.name }}</p>
-          <span>{{ product.price }}</span>
-        </li>
-      </ul>
-    </main>
-
-  </div>
-</template>
-
 <script>
 import axios from 'axios'
 export default {
@@ -38,11 +12,15 @@ export default {
   },
   data() {
     return {
+      searchKeyword: '',
     }
   },
   methods: {
     moveToDetailPage(id) {
       this.$router.push(`detail/${id}`);
+    },
+    updateSearchKeyword(keyword) {
+      this.searchKeyword = keyword
     }
   }
 }
@@ -79,5 +57,34 @@ export default {
   height: 40px;
   font-size: 1rem;
   font-weight: 500;
+
 }
 </style>
+
+<template>
+  <div class="app">
+    <main>
+<!--      :search-keyword="searchKeyword"-->
+<!--      @input="updateSearchKeyword"-->
+      <SearchInput
+        v-model="searchKeyword"
+      ></SearchInput>
+      <ul>
+        <li
+          v-for="product in products"
+          :key="product.id"
+          class= "item flex"
+          @click="moveToDetailPage(product.id)"
+        >
+          <img
+            class="product-image"
+            :src="product.imageUrl"
+            :alt="product.name"/>
+          <p>{{ product.name }}</p>
+          <span>{{ product.price }}</span>
+        </li>
+      </ul>
+    </main>
+
+  </div>
+</template>
