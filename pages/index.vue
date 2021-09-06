@@ -1,9 +1,38 @@
+<template>
+  <div class="app">
+    <main>
+      <!--      :search-keyword="searchKeyword"-->
+      <!--      @input="updateSearchKeyword"-->
+      <SearchInput
+        v-model="searchKeyword"
+        @search="searchProduct"
+      ></SearchInput>
+      <ul>
+        <li
+          v-for="product in products"
+          :key="product.id"
+          class= "item flex"
+          @click="moveToDetailPage(product.id)"
+        >
+          <img
+            class="product-image"
+            :src="product.imageUrl"
+            :alt="product.name"/>
+          <p>{{ product.name }}</p>
+          <span>{{ product.price }}</span>
+        </li>
+      </ul>
+    </main>
+
+  </div>
+</template>
 <script>
 import axios from 'axios'
+import {fetchProductByKeyword} from "~/api";
+
 export default {
   async asyncData() {
     const response = await axios.get('http://localhost:3000/products')
-    console.log(response);
     const products = response.data.map(item => ({
       ...item,
       imageUrl: `${item.imageUrl}?random=${Math.random()}`
@@ -21,6 +50,14 @@ export default {
     },
     updateSearchKeyword(keyword) {
       this.searchKeyword = keyword
+    },
+    async searchProduct() {
+      const response = await fetchProductByKeyword(this.searchKeyword);
+      this.products = response.data.map(item => ({
+        ...item,
+        imageUrl: `${item.imageUrl}?random=${Math.random()}`
+      }));
+      console.log(this.product);
     }
   }
 }
@@ -61,30 +98,4 @@ export default {
 }
 </style>
 
-<template>
-  <div class="app">
-    <main>
-<!--      :search-keyword="searchKeyword"-->
-<!--      @input="updateSearchKeyword"-->
-      <SearchInput
-        v-model="searchKeyword"
-      ></SearchInput>
-      <ul>
-        <li
-          v-for="product in products"
-          :key="product.id"
-          class= "item flex"
-          @click="moveToDetailPage(product.id)"
-        >
-          <img
-            class="product-image"
-            :src="product.imageUrl"
-            :alt="product.name"/>
-          <p>{{ product.name }}</p>
-          <span>{{ product.price }}</span>
-        </li>
-      </ul>
-    </main>
 
-  </div>
-</template>
