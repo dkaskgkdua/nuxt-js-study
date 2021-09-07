@@ -11,7 +11,8 @@
       <div class="side-panel">
         <p class="name">{{ product.name }}</p>
         <p class="price">{{ product.price }}</p>
-<!--        <button type="button" @click="addToCart">Add to Cart</button>-->
+        <button type="button" @click="addToCart">Add to Cart</button>
+<!--        <NuxtLink></NuxtLink>-->
       </div>
     </div>
   </div>
@@ -27,13 +28,13 @@ export default {
     const product = response.data
     return { product }
   },
-  // methods: {
-  //   async addToCart() {
-  //     await createCartItem(this.product)
-  //     this.$store.commit('addItemToCart', this.product)
-  //     this.$router.push('/cart')
-  //   },
-  // },
+  methods: {
+    addToCart() {
+      // await createCartItem(this.product)
+      this.$store.commit('addItemToCart', this.product)
+      this.$router.push('/cart').catch(error => {console.log(error)})
+    },
+  },
 }
 </script>
 
