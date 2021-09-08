@@ -31,7 +31,7 @@ export default {
   methods: {
     addToCart() {
       // await createCartItem(this.product)
-      this.$store.commit('addItemToCart', this.product)
+      this.$store.commit('addCartItem', this.product)
       this.$router.push('/cart').catch(error => {console.log(error)})
     },
   },
