@@ -16,8 +16,12 @@ function fetchProductByKeyword(keyword) {
   })
 }
 
+function fetchCartItems() {
+  return instance.get('/carts')
+}
+
 function createCartItem(cartItem) {
   return instance.post('/carts', cartItem);
 }
 
-export {fetchProductById, fetchProductByKeyword, createCartItem}
+export {fetchProductById, fetchProductByKeyword, createCartItem, fetchCartItems}

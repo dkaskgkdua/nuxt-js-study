@@ -29,8 +29,13 @@
 </template>
 
 <script>
+import {FETCH_CART_ITEMS} from "~/store";
+
 export default {
-  name: "cart"
+  name: "cart",
+  async asyncData({ store }) {
+    await store.dispatch(FETCH_CART_ITEMS)
+  }
 }
 </script>
 

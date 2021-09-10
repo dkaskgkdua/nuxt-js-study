@@ -34,7 +34,7 @@ export default {
       const response = await createCartItem(this.product);
       console.log(response);
       this.$store.commit('addCartItem', this.product)
-      this.$router.push('/cart').catch(error => {console.log(error)})
+      this.$router.push('/cart')
     },
   },
 }
