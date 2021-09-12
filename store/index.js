@@ -34,7 +34,7 @@ export const actions = {
    *  간단하게 어떤 곳이든 데이터를 미리 셋업해놓는곳
    *
    *  */
-  async nuxtServerInit(storeContext, nuxtContext) {
-    await storeContext.dispatch(FETCH_CART_ITEMS)
-  }
+  // async nuxtServerInit(storeContext, nuxtContext) {
+  //   await storeContext.dispatch(FETCH_CART_ITEMS)
+  // }
 }
