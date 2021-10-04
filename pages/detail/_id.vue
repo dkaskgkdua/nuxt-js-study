@@ -28,6 +28,22 @@ export default {
     const product = response.data
     return { product }
   },
+  head: {
+    title: 'Shopping Item',
+    meta: [
+      {
+        hid : 'description',
+        name : 'description',
+        content: '이 상품은 ~~입니다.',
+      },
+    ],
+    // links: [
+    //   {
+    //     rel: 'stylesheet',
+    //     href: '',
+    //   }
+    // ]
+  },
   methods: {
     async addToCart() {
       // await createCartItem(this.product)
