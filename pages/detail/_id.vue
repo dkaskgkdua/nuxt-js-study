@@ -34,10 +34,26 @@ export default {
       title: `상품 상세 페이지 - ${this.product.name}`,
       meta: [
         {
+          // hid 값이 같아야 nuxt.config 파일의 값을 대체가능함
           hid: 'description',
           name: 'description',
           content: `이 상품은 ${this.product.name}입니다.`
-        }
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: `상품 상세 페이지`
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: `이 상품은 ${this.product.name}입니다.`
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: this.product.imageUrl
+        },
       ]
     }
   },
