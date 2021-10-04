@@ -28,22 +28,36 @@ export default {
     const product = response.data
     return { product }
   },
-  head: {
-    title: 'Shopping Item',
-    meta: [
-      {
-        hid : 'description',
-        name : 'description',
-        content: '이 상품은 ~~입니다.',
-      },
-    ],
+  // 동적
+  head() {
+    return {
+      title: `상품 상세 페이지 - ${this.product.name}`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `이 상품은 ${this.product.name}입니다.`
+        }
+      ]
+    }
+  },
+  // 정적
+  // head: {
+  //   title: 'Shopping Item',
+  //   meta: [
+  //     {
+  //       hid : 'description',
+  //       name : 'description',
+  //       content: '이 상품은 ~~입니다.',
+  //     },
+  //   ],
     // links: [
     //   {
     //     rel: 'stylesheet',
     //     href: '',
     //   }
     // ]
-  },
+  // },
   methods: {
     async addToCart() {
       // await createCartItem(this.product)
